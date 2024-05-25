@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pokedex.css"/>
+    <link rel="icon" href="/images/pokeball.ico" type="image/x-icon">
+    <title>Pokedex</title>
+</head>
+<body>
+    <!--Cabezera Filtro y Orden-->
+    <header>
+        <form th:action="@{/pokedex}" method="get">
+            <label for="orden"><b>Selecciona un orden: </b></label>
+            <select id="orden" name="orden">
+                <option value="num">Número de la Pokedex</option>
+                <option value="az">Alfabéticamente</option>
+            </select>
+            <label for="filtro"><b>Selecciona un tipo a filtrar: </b></label>
+            <select id="filtro" name="filtro">
+                <option value="none" disabled selected>Selecciona un tipo...</option>
+                <option value="none">Todos</option>
+                <option value="bicho">Bicho</option>
+                <option value="siniestro">Siniestro</option>
+                <option value="dragon">Dragón</option>
+                <option value="electrico">Eléctrico</option>
+                <option value="hada">Hada</option>
+                <option value="lucha">Lucha</option>
+                <option value="fuego">Fuego</option>
+                <option value="volador">Volador</option>
+                <option value="fantasma">Fantasma</option>
+                <option value="planta">Planta</option>
+                <option value="tierra">Tierra</option>
+                <option value="hielo">Hielo</option>
+                <option value="normal">Normal</option>
+                <option value="veneno">Veneno</option>
+                <option value="psiquico">Psíquico</option>
+                <option value="roca">Roca</option>
+                <option value="acero">Acero</option>
+                <option value="agua">Agua</option>
+            </select>
+            <button type="submit" class="buscar">Buscar</button>
+        </form>
+    </header>
+
+    <!--Pokedex-->
+    <div class="contenedor">
+        <!--Pokemon (por cada)-->
+        <div class="reversible" th:each="pokemon: ${pokedex}">
+            <!--Reverso (botones)-->
+            <div class="verso">
+                <form th:action="@{/pokedex/{numPokedex}(numPokedex=${pokemon.numPokedex})}" method="get">
+					<button type="submit" class="editar">Ver más</button>
+				</form>
+                <form th:action="@{/pokedex/editar/{numPokedex}(numPokedex=${pokemon.numPokedex})}" method="get">
+					<button type="submit" class="editar">Editar</button>
+				</form>
+                <form th:action="@{/pokedex/eliminar/{numPokedex}(numPokedex=${pokemon.numPokedex})}" method="get">
+					<button type="submit" class="eliminar">Eliminar</button>
+				</form>
+            </div>
+            <!--Cara (datos básicos)-->
+            <div class="cara" th:classappend="${pokemon.tipo1}">
+                <h3 class="nombre">#<span th:text="${pokemon.numPokedex}"> </span><span th:text="${pokemon.nombre}"></span></h3>
+                <p class="tipo1" th:text="${pokemon.tipo1}"></p>
+                <p class="tipo2" th:text="${pokemon.tipo2}"></p>
+            </div>
+        </div>
+        <div class="add">
+            <form th:action="@{/pokedex/nuevo}" method="get">
+                <button type="submit" class="crear">Añadir pokemon</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

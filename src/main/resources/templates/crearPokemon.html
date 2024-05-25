@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pokemon.css"/>
+    <link rel="icon" href="/images/pokeball.ico" type="image/x-icon">
+    <title>Crear pokemon</title>
+</head>
+<body>
+    <!--Comprueba el redirectValue que se llama mensaje de Error y solo lo muestra si existe-->
+    <div th:if="${mensajeError}" class="alert alert-danger">
+        <p th:text="${mensajeError}"></p>
+    </div>
+
+    <form th:action="@{/pokedex/crear}" th:object="${pokemon}" method="POST">
+        <div>
+            <label for="nombre">Nombre:</label> 
+            <input th:field="${pokemon.nombre}" type="text" id="nombre" name="nombre">
+        </div>
+        <div>
+            <label for="nombre">Habilidad:</label> 
+            <input th:field="${pokemon.habilidad}" type="text" id="nombre" name="nombre">
+        </div>
+        <div>
+            <label for="nombre" class="form-label">Descripcion:</label> 
+            <input th:field="${pokemon.descripcion}" type="text" id="nombre" name="nombre">
+        </div>
+        <div>
+            <label for="tipo1">Selecciona primer tipo:</label>
+            <select id="tipo1" name="tipo1" th:field="${pokemon.tipo1}">
+            	<option value="" disabled selected>Selecciona un tipo...</option>
+                <option value="bicho">Bicho</option>
+                <option value="siniestro">Siniestro</option>
+                <option value="dragon">Dragón</option>
+                <option value="electrico">Eléctrico</option>
+                <option value="hada">Hada</option>
+                <option value="lucha">Lucha</option>
+                <option value="fuego">Fuego</option>
+                <option value="volador">Volador</option>
+                <option value="fantasma">Fantasma</option>
+                <option value="planta">Planta</option>
+                <option value="tierra">Tierra</option>
+                <option value="hielo">Hielo</option>
+                <option value="normal">Normal</option>
+                <option value="veneno">Veneno</option>
+                <option value="psiquico">Psíquico</option>
+                <option value="roca">Roca</option>
+                <option value="acero">Acero</option>
+                <option value="agua">Agua</option>
+            </select>
+        </div>
+        <div>
+            <label for="tipo2">Selecciona segundo tipo:</label>
+            <select id="tipo2" name="tipo2" th:field="${pokemon.tipo2}">
+                <option value="" disabled selected>Selecciona un tipo...</option>
+                <option value="">Ninguno</option>
+                <option value="bicho">Bicho</option>
+                <option value="siniestro">Siniestro</option>
+                <option value="dragon">Dragón</option>
+                <option value="electrico">Eléctrico</option>
+                <option value="hada">Hada</option>
+                <option value="lucha">Lucha</option>
+                <option value="fuego">Fuego</option>
+                <option value="volador">Volador</option>
+                <option value="fantasma">Fantasma</option>
+                <option value="planta">Planta</option>
+                <option value="tierra">Tierra</option>
+                <option value="hielo">Hielo</option>
+                <option value="normal">Normal</option>
+                <option value="veneno">Veneno</option>
+                <option value="psiquico">Psíquico</option>
+                <option value="roca">Roca</option>
+                <option value="acero">Acero</option>
+                <option value="agua">Agua</option>
+            </select>
+        </div>
+        <button type="submit" class="pokedex">Crear Pokemon</button>
+    </form>
+    <br>
+    <form th:action="@{/}" method="get">
+        <button type="submit" class="pokedex">Volver a la Pokedex</button>
+    </form>
+</body>
+</html>

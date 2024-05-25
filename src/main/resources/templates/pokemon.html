@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pokemon.css"/>
+    <link rel="icon" href="/images/pokeball.ico" type="image/x-icon">
+    <title th:text="${pokemon.nombre}"></title>
+</head>
+<body>
+    <h1>#<span th:text="${pokemon.numPokedex}"></span> <span th:text="${pokemon.nombre}"></span></h1>
+    <p><b>Primer tipo: </b><span th:text="${pokemon.tipo1}"></span></p>
+    <p><b>Segundo tipo: </b><span th:text="${pokemon.tipo2}"></span></p>
+    <p><b>Habilidad: </b><span th:text="${pokemon.habilidad}"></span></p>
+    <p><b>Descripción: </b><span th:text="${pokemon.descripcion}"></span></p>
+    <form th:action="@{/}" method="get">
+        <button type="submit" class="pokedex">Volver a la Pokedex</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pokemonNotFound.css">
+    <link rel="icon" href="/images/pokeball.ico" type="image/x-icon">
+    <title>Pokemon No encontrado</title>
+</head>
+<body>
+    <h2>No se ha encontrado dicho pokemon.</h2>
+    <form th:action="@{/}" method="get">
+        <button type="submit" class="pokedex">Ir a la Pokedex</button>
+    </form>
+</body>
+</html>

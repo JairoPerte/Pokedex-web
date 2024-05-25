@@ -1,0 +1,14 @@
+body{
+    background-color: burlywood;
+}
+
+.container{
+    text-align: center;
+    line-height: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.error{
+    color: rgb(154, 87, 216);
+    font-size: 120px;
+}
