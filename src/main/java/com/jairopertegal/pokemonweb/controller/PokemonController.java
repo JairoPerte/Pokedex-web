@@ -63,7 +63,7 @@ public class PokemonController {
 		List<Pokemon> pokedex = null;
 
 		//Si el orden es "az" es orden alfabético
-		if (orden.equals("az")) {
+		if (orden != null && orden.equals("az")) {
 
 			// Si ha insertado filtro o el filtro se ha introducido
 			if (filtro != null && !filtro.equals("none")) {
